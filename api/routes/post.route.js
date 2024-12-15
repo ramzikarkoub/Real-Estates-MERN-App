@@ -2,23 +2,19 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.status(200).send("wataaaa");
+  res.status(200).send("wazaaaaup");
 });
+// router.post("/", (req, res) => {
+//   res.status(200).send("wazaaaaup");
+// });
+// router.put("/", (req, res) => {
+//   res.status(200).send("wazaaaaup");
+// });
+// router.delete("/", (req, res) => {
+//   res.status(200).send("wazaaaaup");
+// });
+
 export default router;
-// import express from "express";
-// const router = express.Router();
-
-// // Define the root route
-// router.get("/", (req, res) => {
-//   res.status(200).send("Welcome to the Posts API");
-// });
-
-// // Define a specific route
-// router.get("/hi", (req, res) => {
-//   res.status(200).send("this is /hi!");
-// });
-
-// export default router;
 
 // // app.use("/api/auth/register", (req, res) => res.send("it works"));
 // // app.use("/api/auth/login", (req, res) => res.send("it works"));

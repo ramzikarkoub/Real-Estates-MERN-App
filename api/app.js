@@ -1,22 +1,10 @@
 import express from "express";
-import postsRoute from "./routes/post.route.js";
 const app = express();
+import postRoute from "./routes/post.route.js";
+import authRoute from "./routes/auth.route.js";
 
-app.use("/api/posts", postsRoute);
-
+app.use("/api/posts", postRoute);
+app.use("/api/auth", authRoute);
 app.listen(8800, () => {
-  console.log("server is running");
+  console.log("server running");
 });
-
-// import express from "express";
-// import postRoute from "./routes/post.route.js";
-
-// const app = express();
-
-// // Middleware to use the router
-// app.use("/api/posts", postRoute);
-
-// // Start the server
-// app.listen(8800, () => {
-//   console.log("server is live");
-// });
