@@ -6,33 +6,42 @@ import { useState } from "react";
 function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(e.target);
-    const email = formData.get("email");
+    const username = formData.get("username");
     const password = formData.get("password");
-    console.log(username, email, password);
+    console.log(username, username, password);
     //request
     try {
       const res = await apiRequest.post("/auth/login", {
-        email,
+        username,
         password,
       });
-      console.log(res.data);
-      navigate("/login");
+      console.log(res);
     } catch (error) {
       console.log(error);
       setError(error.response.data.message);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
     <div className="login">
       <div className="formContainer">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Welcome back</h1>
-          <input name="username" type="text" placeholder="Username" />
-          <input name="password" type="password" placeholder="Password" />
-          <button>Login</button>
+          <input name="username" required type="text" placeholder="Username" />
+          <input
+            name="password"
+            required
+            type="password"
+            placeholder="Password"
+          />
+          <button disabled={isLoading}>Login</button>
           {error && <span>{error}</span>}
           <Link to="/register">{"Don't"} you have an account?</Link>
         </form>
