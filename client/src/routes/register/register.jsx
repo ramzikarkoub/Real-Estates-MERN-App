@@ -11,6 +11,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
     const formData = new FormData(e.target);
     const username = formData.get("username");
     const email = formData.get("email");
